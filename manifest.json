@@ -4,7 +4,7 @@
   "version": "1.0",
   "permissions": ["tabs", "storage", "downloads", "activeTab", "scripting"],
   "web_accessible_resources": [{
-    "resources": ["normal_popup.html", "normal_popup.js", "popup.js"],
+    "resources": ["popup.js"],
     "matches": [
               "https://*/*",
               "http://*/*"
