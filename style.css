@@ -1,0 +1,11 @@
+.close-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+.image-container {
+    border: 3px solid green;
+    display: block;
+    position: relative;
+}
