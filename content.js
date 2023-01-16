@@ -1,23 +1,26 @@
-let popup = window.open(
-    chrome.runtime.getURL("normal_popup.html"),
-    "exampleName",
-    "width=400,height=400"
-);
-function onLoad(popup) { 
-  console.log("WINDOW LOADED");
-}
+console.log("Test");
 let images = document.getElementsByTagName("img");
 for (i = 0; i < images.length; i++){
   let image = images[i]
   image.onclick = function(){onclick(image.src)}
 }
 
-const first_image = images[0];
+const url = document.URL;
+let key = 0;
+
 function onclick(myImageSrc){
   console.log("clicked");
-  (async () => {
-    const response = await chrome.runtime.sendMessage({imageSrc: myImageSrc});
-    // do something with response here, not outside the function
-    console.log(response);
-  })();
+  var existingImgKeys;
+  chrome.storage.local.get([url]).then((keyImgs) => {
+    existingImgKeys = keyImgs[url]
+    if (!existingImgKeys){
+      existingImgKeys = {}
+    }
+    console.log("Existing image keys: " + JSON.stringify(existingImgKeys));
+    existingImgKeys[key.toString()] = myImageSrc;
+    key += 1;
+    chrome.storage.local.set({[url]: existingImgKeys})
+    console.log(url);
+    console.log("Existing image keys at end: " + JSON.stringify(existingImgKeys));
+  });
 }

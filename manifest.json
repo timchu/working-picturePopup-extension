@@ -4,13 +4,15 @@
   "version": "1.0",
   "permissions": ["tabs", "storage", "downloads", "activeTab", "scripting"],
   "web_accessible_resources": [{
-    "resources": ["normal_popup.html", "normal_popup.js", "inject.js"],
+    "resources": ["normal_popup.html", "normal_popup.js", "popup.js"],
     "matches": [
               "https://*/*",
               "http://*/*"
     ]
   }],
-  "action": {},
+  "action": {
+    "default_popup": "popup.html"
+  },
   "content_scripts": [{
       "js": ["content.js"],
       "matches": [
